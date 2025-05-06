@@ -1,0 +1,8 @@
+---
+- name: Ping Remote Hosts as root
+  hosts: all
+  become: true  # Elevate to root user
+  gather_facts: no
+  tasks:
+    - name: Ping the hosts
+      ansible.builtin.ping:
