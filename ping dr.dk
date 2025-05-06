@@ -1,0 +1,15 @@
+---
+- name: Ping dr.dk from all hosts
+  hosts: all
+  gather_facts: no
+  become: false
+
+  tasks:
+    - name: Ping dr.dk
+      command: ping -c 5 dr.dk
+      register: ping_output
+      ignore_errors: yes
+
+    - name: Show ping result
+      debug:
+        var: ping_output.stdout_lines
