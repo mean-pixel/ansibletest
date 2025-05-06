@@ -1,0 +1,10 @@
+---
+- name: Update all packages on all hosts
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure all packages are up to date
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: true
